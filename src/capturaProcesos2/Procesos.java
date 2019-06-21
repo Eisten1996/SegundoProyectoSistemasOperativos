@@ -20,11 +20,13 @@ import org.hyperic.sigar.cmd.SigarCommandBase;
  *
  * @author Dipper
  */
-public class Procesos extends SigarCommandBase{
+public class Procesos extends SigarCommandBase {
+
     ArrayList<ListaProcesos> lp = new ArrayList<>();
-    String a,b,c;
+    String a, b, c;
     int num = 0;
-    String procesos="";
+    String procesos = "";
+
     @Override
     public void output(String[] args) throws SigarException {
         long[] pids;
@@ -50,9 +52,9 @@ public class Procesos extends SigarCommandBase{
         Iterator i = info.iterator();
         boolean hasNext = i.hasNext();
         while (hasNext) {
-            a=(String) i.next();
-            b=(String) i.next();
-            c=(String) i.next();
+            a = (String) i.next();
+            b = (String) i.next();
+            c = (String) i.next();
             buf.append(a);
             buf.append("\t");
             buf.append(b);
@@ -61,12 +63,9 @@ public class Procesos extends SigarCommandBase{
             buf.append("\t");
             lp.add(new ListaProcesos(a, b, c));
             hasNext = i.hasNext();
-
         }
-
         return buf.toString();
     }
-    
 
     public List getInfo(SigarProxy sigar, long pid)
             throws SigarException {
@@ -86,13 +85,13 @@ public class Procesos extends SigarCommandBase{
             ProcMem mem = sigar.getProcMem(pid);
             String j = Sigar.formatSize(mem.getRss());
             Float k;
-            if(j.substring(j.length() - 1, j.length()).equalsIgnoreCase("M")){
-                j=j.substring(0, j.length() - 1);
-            }else{
-                k= Float.parseFloat(j.substring(0, j.length() - 1))/1024;
-                j=String.valueOf(k);
+            if (j.substring(j.length() - 1, j.length()).equalsIgnoreCase("M")) {
+                j = j.substring(0, j.length() - 1);
+            } else {
+                k = Float.parseFloat(j.substring(0, j.length() - 1)) / 1024;
+                j = String.valueOf(k);
             }
-            
+
             info.add(j);
 
         } catch (SigarException e) {
@@ -103,23 +102,17 @@ public class Procesos extends SigarCommandBase{
         info.add(name);
         return info;
     }
-    
-    
 
     public void output(long pid) throws SigarException {
-        
-        //println(join(getInfo(this.proxy, pid)));
-        procesos=procesos+join(getInfo(this.proxy, pid))+"\n";
-        
-        
 
+        //println(join(getInfo(this.proxy, pid)));
+        procesos = procesos + join(getInfo(this.proxy, pid)) + "\n";
 
     }
-    
-    public String listProcess (String[] args) throws SigarException{
+
+    public String listProcess(String[] args) throws SigarException {
         output(args);
         return procesos;
     }
-    
-    
+
 }

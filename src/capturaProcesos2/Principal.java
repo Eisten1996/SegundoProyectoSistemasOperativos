@@ -7,18 +7,24 @@ package capturaProcesos2;
 
 import org.hyperic.sigar.SigarException;
 
-
 /**
  *
  * @author Desarrollo
  */
 public class Principal {
-    public static void main(String[] args) throws SigarException {
 
-        Panel1 frame = new Panel1(args);
-        frame.setSize(1300, 700);
-        frame.setTitle("Captura de Procesos");
-        frame.setVisible(true);
+    public static void main(String[] args) throws SigarException, InterruptedException {
+
+        int i =0;
+        while(i==0){
+            Panel1 frame = new Panel1(args);
+            frame.setSize(1300, 700);
+            frame.setTitle("Captura de Procesos");
+            frame.setVisible(true);
+            Thread.sleep(2000);
+        }
+            
+
 
     }
 }

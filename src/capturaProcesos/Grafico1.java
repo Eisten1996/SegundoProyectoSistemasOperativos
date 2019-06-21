@@ -172,17 +172,21 @@ public class Grafico1 extends JFrame {
         int b = (int) (pro.getUsuario() / (7) - 450 / 7);
         int f = (int) (firefox.getUsuario() / (20));
         int w = (int) (word.getUsuario() / (20));
+        
         g.setColor(Color.white);
         g.setFont(new Font("Helvetica", Font.PLAIN, 16));
         g.drawString("Barra de procesos", 100, 450);
+        
         g.setColor(Color.white);
         g.setFont(new Font("Helvetica", Font.PLAIN, 30));
         g.drawString("Rendimiento de Memoria Real", 450, 100);
 
         g.setColor(Color.WHITE);
         g.fill3DRect(100, 400, (int) (mt / 7), 100, true);
+        
         g.setColor(Color.red);
         g.fill3DRect(100, 400, a, 100, true);
+        
         g.setColor(Color.blue);
         g.fill3DRect(100 + a, 400, b - a, 100, true);
         if (f != 0) {
