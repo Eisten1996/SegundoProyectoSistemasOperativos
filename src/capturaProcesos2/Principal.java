@@ -15,16 +15,13 @@ public class Principal {
 
     public static void main(String[] args) throws SigarException, InterruptedException {
 
-        int i =0;
-        while(i==0){
+        int i = 0;
+        while (i == 0) {
             Panel1 frame = new Panel1(args);
             frame.setSize(1300, 700);
             frame.setTitle("Captura de Procesos");
             frame.setVisible(true);
-            Thread.sleep(2000);
+            Thread.sleep(3000);
         }
-            
-
-
     }
 }
