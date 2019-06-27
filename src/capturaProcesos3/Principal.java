@@ -6,8 +6,6 @@
 package capturaProcesos3;
 
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import org.hyperic.sigar.SigarException;
@@ -28,13 +26,14 @@ public class Principal {
         while (i == 0) {
             cc = new ComponenteCaptura(args);
             JButton boton = cc.button;
+            boton.addActionListener(cc);
             cc.add(boton);
             frame.add(cc);
             frame.getContentPane();
             frame.setSize(1366, 768);
             frame.setVisible(true);
             cc.update(cc.getGraphics());
-            Thread.sleep(2000);
+            Thread.sleep(3000);
 
         }
     }
